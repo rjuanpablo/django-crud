@@ -1,0 +1,15 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>Signup</h1>
+<form action="/signup/" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button>
+        Signup
+    </button>
+</form> 
+
+<a href="{% url 'home' %}">Volver</a>
+{% endblock %}
