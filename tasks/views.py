@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.db import IntegrityError
 from .models import Task
 from .forms import TaskForm
+from django.utils import timezone
 
 # Create your views here.
 
@@ -45,6 +46,10 @@ def home(request):
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
     return render(request, 'tasks.html', {'tasks': tasks})
+
+def tasks_completed(request):
+    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
+    return render(request, 'tasks_completed.html', {'tasks': tasks})
 
 def create_task(request):
     if request.method == 'POST':
@@ -97,6 +102,19 @@ def create_task_(request):
         return render(request, 'create_task.html', {
             'form': TaskForm(),
         })
+    
+def complete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    if request.method == 'POST':
+        task.datecompleted = timezone.now()
+        task.save()
+        return redirect('tasks')
+
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('tasks')
 
 def signout(request):
     logout(request)

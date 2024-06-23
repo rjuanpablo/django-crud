@@ -18,6 +18,11 @@
         color: #333;
     }
 
+    .task-list {
+        list-style: none;
+        padding: 0;
+    }
+
     .task-item {
         background-color: #fff;
         padding: 15px;
@@ -59,16 +64,20 @@
 </style>
 
 <div class="container">
-    <div class="task-item">
-        <h1 class="task-title">{{ task.title }}</h1>
-        {% csrf_token %}
-        <form method="POST">
-            {{ form }}
-            <button type="submit" class="btn btn-primary">Update</button>
-        </form>
-        <!-- <p class="task-description">{{ task.description }}</p>
-        <span class="task-date">Created at: {{ task.created_at }}</span> -->
-    </div>
-    <a href="{% url 'tasks' %}" class="new-task-button">Back to Tasks</a>
+    <h1 class="title">Tasks completed</h1>
+    <ul class="task-list">
+        {% for task in tasks %}
+            <li class="task-item">
+                {% if task.important %}
+                    <h3 class="task-title"><p class="task-title">{{ task.title }}</p></h3>
+                {% else %}
+                    {{ task.title }}
+                {% endif %}
+                <p class="task-description">{{ task.description }}</p>
+                <span class="task-date">{{ task.created_at }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_task' %}" class="new-task-button">New Task</a>
 </div>
 {% endblock %}
