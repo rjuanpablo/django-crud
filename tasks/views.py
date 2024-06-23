@@ -65,8 +65,21 @@ def create_task(request):
         })
     
 def task_detail(request, task_id):
-    task = get_object_or_404(Task, id=task_id)
-    return render(request, 'task_detail.html', {'task': task})
+    if request.method == 'POST':
+        try:
+            task = get_object_or_404(Task, id=task_id, user=request.user)
+            form = TaskForm(request.POST, instance=task)
+            #if form.is_valid():
+            form.save()
+            return redirect('tasks')
+            #else:
+            return render(request, 'task_detail.html', {'task': task, 'form': form})
+        except Exception:
+            return render(request, 'task_detail.html', {'task': task,'form': form, 'error': 'An error occurred while updating the task.'})
+    else:
+        task = get_object_or_404(Task, id=task_id, user=request.user)
+        form = TaskForm(instance=task)
+        return render(request, 'task_detail.html', {'task': task, 'form': form})
 
 def create_task_(request):
     if request.method == 'POST':
