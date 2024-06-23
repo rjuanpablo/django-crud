@@ -1,87 +1,32 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-<style>
-    .container {
-        width: 80%;
-        margin: 0 auto;
-        padding: 20px;
-        font-family: Arial, sans-serif;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
 
-    .title {
-        font-size: 2em;
-        margin-bottom: 20px;
-        color: #333;
-    }
-
-    .task-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .task-item {
-        background-color: #fff;
-        padding: 15px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .task-title {
-        font-size: 1.5em;
-        margin-bottom: 5px;
-        color: #007BFF;
-    }
-
-    .task-description {
-        margin-bottom: 10px;
-        color: #666;
-    }
-
-    .task-date {
-        font-size: 0.9em;
-        color: #999;
-    }
-
-    .new-task-button {
-        display: inline-block;
-        padding: 10px 20px;
-        margin-top: 20px;
-        background-color: #007BFF;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-
-    .new-task-button:hover {
-        background-color: #0056b3;
-    }
-</style>
-
-<div class="container">
-    <h1 class="title">Tasks</h1>
-    <ul class="task-list">
-        {% for task in tasks %}
-            <li class="task-item">
-                {% if task.important %}
-                    <h3 class="task-title"><a href="{% url 'task_detail' task.id %}" class="task-title">{{ task.title }}</a></h3>
-                {% else %}
-                    {{ task.title }}
-                {% endif %}
-                <p class="task-description">{{ task.description }}</p>
-                <span class="task-date">{{ task.created_at }}</span>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'create_task' %}" class="new-task-button">New Task</a>
-</div>
+<main>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center display-3 py-3">Tasks pending</h1>
+            <ul class="list-group">
+                {% for task in tasks %}
+                <a class="list-group-item" href="{% url 'task_detail' task.id %}">
+                    {% if task.important %}
+                    <strong>{{ task.title }}</strong>⚠️</p>
+                    {% else %}
+                    <p class="fw-bold">{{ task.title }}</p>
+                    {% endif %}
+                    <p>{{ task.description }}</p>
+                    <span>{{ task.created_at }}</span>
+                </a>
+                {% endfor %}
+            </ul>
+            <div class="d-flex justify-content-end mt-1">
+                <a class="btn btn-secondary" href="{% url 'tasks_completed' %}">See completed tasks</a>
+                <a class="btn btn-primary ms-1" href="{% url 'create_task' %}">New Task</a>
+            </div>
+        </div>
+    </div>
+</main>
 
 
-<a href="{% url 'tasks_completed' %}" class="new-task-button">See completed tasks</a>
 
 {% endblock %}

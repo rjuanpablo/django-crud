@@ -1,18 +1,38 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-<h1>Signup</h1>
 
-{{error}}
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form action="/signup/" method="POST" class="card card-body">
+                <h1 class=" text-center">Signup</h1>
+                {{ error }}
+                {% csrf_token %}
+                <!-- {{ form.as_p }} -->
+                
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Write your username">
+                </div>
+                <div class="mb-3">
+                    <label for="password1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Write your password">
+                </div>
+                <div class="mb-3">
+                    <label for="password2" class="form-label">Repeat Password</label>
+                    <input type="password" class="form-control" id="password2" name="password2" placeholder="Repeat your password">
+                </div>
+                <div class="d-flex justify-content-evenly">
+                    <a class="btn btn-outline-dark m-1" href="{% url 'home' %}">Volver</a>
+                    <button class="btn btn-primary">
+                        Signup
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
 
-<form action="/signup/" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
 
-    <button>
-        Signup
-    </button>
-</form> 
-
-<a href="{% url 'home' %}">Volver</a>
 {% endblock %}

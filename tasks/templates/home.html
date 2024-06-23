@@ -1,6 +1,23 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-<h1>Home</h1>
-<a href="{% url 'signup' %}">Sign UP</a>
+<main class="container p-5">
+    <section class="card card-body">
+        <h1 class="display-1 text-center">Tasks App</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod repellat corporis et laboriosam minima odio
+            cupiditate incidunt itaque ea laudantium dolor inventore consectetur ipsa, labore repellendus impedit, saepe
+            aut qui voluptatem, nemo nesciunt quae hic! Suscipit quos totam sit modi, ab explicabo hic delectus nihil.
+            Molestiae maiores debitis obcaecati corrupti quasi dolor! Doloremque delectus eaque perferendis perspiciatis
+            rem ab ad iste velit quia? Facere, excepturi placeat harum iure aliquid error sed illum amet nesciunt.
+            Dignissimos delectus molestias perferendis cumque quam, illum quasi perspiciatis fugit dolor blanditiis
+            totam debitis pariatur, eum veniam aspernatur possimus expedita distinctio. Nobis recusandae pariatur
+            molestias dolor.</p>
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-outline-primary m-1" href="{% url 'signin' %}">Sign IN</a>
+            <a class="btn btn-outline-success m-1" href="{% url 'signup' %}">Sign UP</a>
+        </div>
+    </section>
+</main>
+
+
 {% endblock %}
