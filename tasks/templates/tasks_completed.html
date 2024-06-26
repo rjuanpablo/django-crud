@@ -17,6 +17,8 @@
                     <p>{{ task.description }}</p>
                     <span>{{ task.created_at }}</span>
                 </a>
+                {% empty %}
+                <li class="list-group-item">No tienes ninguna tarea completada.</li>
                 {% endfor %}
             </ul>
             <div class="d-flex justify-content-end mt-1">
