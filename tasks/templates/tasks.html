@@ -2,33 +2,31 @@
 
 {% block content %}
 
-<main>
+<main class="container py-5">
     <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h1 class="text-center display-3 py-3">Tareas pendientes</h1>
-            <ul class="list-group">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center display-3 pb-3">Tareas pendientes</h1>
+            <div class="list-group overflow-auto" style="max-height: 70vh;">
                 {% for task in tasks %}
-                <a class="list-group-item" href="{% url 'task_detail' task.id %}">
+                <a class="list-group-item list-group-item-action" href="{% url 'task_detail' task.id %}">
                     {% if task.important %}
-                    <strong>Tarea #{{ task.id|stringformat:"06d" }} - {{ task.title }}</strong>⚠️</strong>
+                    <h5 class="mb-1">#{{ task.id|stringformat:"06d" }} - <strong>{{ task.title }}</strong> ⚠️</h5>
                     {% else %}
-                    <p class="fw-bold">Tarea #{{ task.id|stringformat:"06d" }} - {{ task.title }}</p>
+                    <h5 class="mb-1">#{{ task.id|stringformat:"06d" }} - {{ task.title }}</h5>
                     {% endif %}
-                    <p>{{ task.description }}</p>
-                    <span>{{ task.created_at }}</span>
+                    <p class="mb-1">{{ task.description }}</p>
+                    <small>{{ task.created_at }}</small>
                 </a>
                 {% empty %}
                 <li class="list-group-item">No tienes ninguna tarea pendiente.</li>
                 {% endfor %}
-            </ul>
-            <div class="d-flex justify-content-end mt-1">
-                <a class="btn btn-secondary" href="{% url 'tasks_completed' %}">Ver tareas completadas</a>
-                <a class="btn btn-primary ms-1" href="{% url 'create_task' %}">Nueva tarea</a>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                <a class="btn btn-secondary me-2" href="{% url 'tasks_completed' %}">Ver tareas completadas</a>
+                <a class="btn btn-primary" href="{% url 'create_task' %}">Nueva tarea</a>
             </div>
         </div>
     </div>
 </main>
-
-
 
 {% endblock %}
