@@ -28,12 +28,12 @@ def signup(request):
             except IntegrityError:
                 return render(request, 'signup.html', {
                     'form': UserCreationForm(),
-                    'error': 'Username already exists.',
+                    'error': 'Nombre de usuario no disponible',
                 })
 
         return render(request, 'signup.html', {
             'form': UserCreationForm(),
-            'error': 'Passwords do not match.',
+            'error': 'Las contraseñas no coinciden',
         })
 
 
@@ -66,7 +66,7 @@ def create_task(request):
         except Exception:
             return render(request, 'create_task.html', {
                 'form': TaskForm(),
-                'error': 'An error occurred while creating the task.',
+                'error': 'Ocurrio un error al crear la tarea.',
             })
     else:
         return render(request, 'create_task.html', {
@@ -85,7 +85,7 @@ def task_detail(request, task_id):
             #else:
             return render(request, 'task_detail.html', {'task': task, 'form': form})
         except Exception:
-            return render(request, 'task_detail.html', {'task': task,'form': form, 'error': 'An error occurred while updating the task.'})
+            return render(request, 'task_detail.html', {'task': task,'form': form, 'error': 'Ocurrio un error al actualizar la tarea.'})
     else:
         task = get_object_or_404(Task, id=task_id, user=request.user)
         form = TaskForm(instance=task)
@@ -145,7 +145,7 @@ def signin(request):
         else:
             return render(request, 'signin.html', {
                 'form': AuthenticationForm(),
-                'error': 'Invalid username or password.',
+                'error': 'Usuario o contraseña incorrectos.',
             })
 
 
@@ -159,7 +159,7 @@ def signin2(request):
             return redirect('tasks')
         else:
             return render(request, 'signin.html', {
-                'error': 'Invalid username or password.',
+                'error': 'Usuario o contraseña incorrectos.',
             })
     else:
         return render(request, 'signin.html')

@@ -31,11 +31,14 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                        <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signup' %}">Registrarse</a></li>
+                        <a class="nav-link" href="{% url 'signin' %}">Iniciar sesión</a>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signin' %}">Iniciar sesión</a></li>
+                        <a class="nav-link" href="{% url 'signup' %}">Registrarse</a>
+                    </li>
                     {% endif %}
                     <!-- <li class="nav-item">
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
