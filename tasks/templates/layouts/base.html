@@ -12,7 +12,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Tasks App</a>
+            <a class="navbar-brand" href="#">Tareas App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,21 +21,21 @@
                 <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'tasks' %}">Tasks pending</a>
+                        <a class="nav-link" href="{% url 'tasks' %}">Tareas pendientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'tasks_completed' %}">Tasks completed</a>
+                        <a class="nav-link" href="{% url 'tasks_completed' %}">Tareas completadas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+                        <a class="nav-link" href="{% url 'signup' %}">Registrarse</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signin' %}">Signin</a></li>
+                        <a class="nav-link" href="{% url 'signin' %}">Iniciar sesión</a></li>
                     {% endif %}
                     <!-- <li class="nav-item">
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>

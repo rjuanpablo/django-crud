@@ -5,7 +5,7 @@
 <main>
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h1 class="text-center display-3 py-3">Tasks pending</h1>
+            <h1 class="text-center display-3 py-3">Tareas pendientes</h1>
             <ul class="list-group">
                 {% for task in tasks %}
                 <a class="list-group-item" href="{% url 'task_detail' task.id %}">
@@ -20,8 +20,8 @@
                 {% endfor %}
             </ul>
             <div class="d-flex justify-content-end mt-1">
-                <a class="btn btn-secondary" href="{% url 'tasks_completed' %}">See completed tasks</a>
-                <a class="btn btn-primary ms-1" href="{% url 'create_task' %}">New Task</a>
+                <a class="btn btn-secondary" href="{% url 'tasks_completed' %}">Ver tareas completadas</a>
+                <a class="btn btn-primary ms-1" href="{% url 'create_task' %}">Nueva tarea</a>
             </div>
         </div>
     </div>

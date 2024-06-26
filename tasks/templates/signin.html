@@ -6,23 +6,23 @@
     <div class="row">
         <div class="col-md-4 offset-md-4 mt-5">
             <form action="/signin/" method="POST" class="card card-body">
-                <h1 class=" text-center">Signin</h1>
+                <h1 class=" text-center">Iniciar sesión</h1>
                 {{ error }}
                 {% csrf_token %}
                 <!-- {{ form.as_p }} -->
                 
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Write your username">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Escribe tu nombre">
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Write your password">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Escribe tu contraseña">
                 </div>
                 <div class="d-flex justify-content-evenly">
-                    <a class="btn btn-outline-dark m-1" href="{% url 'home' %}">Go back</a>
+                    <a class="btn btn-outline-dark m-1" href="{% url 'home' %}">Volver</a>
                     <button class="btn btn-primary">
-                        Signin
+                        Iniciar sesión
                     </button>
                 </div>
             </form>

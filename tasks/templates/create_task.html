@@ -10,11 +10,11 @@
             {{ error }}
 
             <form action="/tasks/create/" method="POST" class="card card-body">
-                <h1 class="text-center display-3 py-3">Create task</h1>
+                <h1 class="text-center display-3 py-3">Crear tarea</h1>
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button class="btn btn-primary">
-                    Create
+                    Crear
                 </button>
             </form>
         </div>
