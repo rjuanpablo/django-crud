@@ -10,9 +10,9 @@
                 {% for task in tasks %}
                 <a class="list-group-item" href="{% url 'task_detail' task.id %}">
                     {% if task.important %}
-                    <strong>{{ task.title }}</strong>⚠️</p>
+                    <strong>Tarea #{{ task.id|stringformat:"06d" }} - {{ task.title }}</strong>⚠️</strong>
                     {% else %}
-                    <p class="fw-bold">{{ task.title }}</p>
+                    <p class="fw-bold">Tarea #{{ task.id|stringformat:"06d" }} - {{ task.title }}</p>
                     {% endif %}
                     <p>{{ task.description }}</p>
                     <span>{{ task.created_at }}</span>
